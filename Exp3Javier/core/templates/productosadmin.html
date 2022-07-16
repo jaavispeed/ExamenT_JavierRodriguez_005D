@@ -1,0 +1,87 @@
+{% extends "./base.html" %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Registro de productos.</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/RegistrarProductos/" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtidproducto" name="txtidproducto" class="form-control" placeholder="Ingrese id del producto" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtproducto" name="txtproducto" class="form-control" placeholder="Ingrese el nombre del producto" minlength="2" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="txtprecio" name="txtprecio" class="form-control" value="{{producto.precio}}" placeholder="Ingrese el precio" minlength="2" maxlength="30" required>
+                    </div>
+                    <label>Imagen</label>
+                    <input type="file" name="txtImagen" id="txtImagen" required><br><br>
+                    <div class="form-group">
+                        {% if user.is_authenticated  %}
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para agregar</a></td>
+                        {% endif %}
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de productos</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Precio$</th>
+                        <th>Imagen</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in productos %}
+                    <tr>
+                        <td>{{c.idProducto}}</td>
+                        <td>{{c.nombreProducto}}</td>
+                        <td>{{c.precio}}</td>
+                        <td>
+                            {% if c.imagen %}
+                            <img src="{{ c.imagen.url }}" width="100px" height="100px">
+                            {% endif %}
+                        </td>
+                        {% if user.is_authenticated  %}
+                        <td><a href="{% url 'editarProducto' c.idProducto %}" class="btn btn-info">Editar</a></td>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para modificar</a></td>
+                        {% endif %}
+
+                        {% if user.is_authenticated  %}
+                        <td><a href="{% url 'eliminarProducto' c.idProducto %}" class="btn btn-danger">Eliminar</a></td>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para eliminar</a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/estilos2.css' %}">
+  <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' %}"></script>
+  <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js' %}"></script>
+  <!-- Latest compiled and minified CSS -->
+  <!-- jQuery library -->
+  <!-- Popper JS -->
+  <!-- Latest compiled JavaScript -->
+
+  <!--Script para validar los datos-->
+
+
+  <script>
+      
+    $(function() 
+    {
+      $("#form").validate({
+           rules: {
+                  email: {
+                      required: true,
+                      email: true
+                  },
+                  password: "required",
+                  password2: {
+                      required: true,
+                      equalTo: "#password"
+                  }   
+                  
+              }, //rules
+          messages: {
+              email: {
+                  required: 'Ingresa tu correo electrónico',
+                  email: 'Formato de correo no válido'
+              },
+              nombre:{
+                required: 'Ingresa tu nombre',
+                minlength: 'Caracteres insuficientes (3)'
+              },
+
+              mensaje:{
+                  required: 'Debe ingresar un mensaje',
+                  minlength: 'Caracteres insuficientes (3)'
+              }
+          }//messages
+      }); //$('#form').validate
+  }); //function
+
+
+</script>
+
+<!--Script con los DOM-->
+<script>
+function CambiarMayusculas()
+    {
+        var a = document.getElementById('nombre');
+        a.value = a.value.toUpperCase();
+    }
+
+function CambiarMayusculas2()
+    {
+        var a = document.getElementById('email');
+        a.value = a.value.toUpperCase();
+    }
+function CambiaColor(a)
+    {
+        a.style.background = "rgb(255, 241, 225)";
+    }
+
+function MostrarFecha() 
+    {   document.getElementById('demo').innerHTML = Date();
+    
+    }
+    
+</script>
+
+  <title>Formulario de Contacto</title>
+</head>
+
+
+<!--Formulario-->
+<body>
+    {% load static %}
+  <div class="container">
+    <div class="header">
+
+      <h2 onmouseover="style.color = 'red'" onmouseout="style.color= 'black'">Contactanos</h2>
+    </div>
+    <form id="form" class="form" action="{% url 'index' %}">
+        <div class="form-control">
+            <label for="username">Nombre<span class="obli">*</span></label>
+            <input type="text" placeholder="Ingrese su nombre" id="nombre" name="nombre" minlength="3" 
+            onchange="CambiarMayusculas()" onfocus="CambiaColor(this)" required>
+        </div>
+
+        <div class="form-control">
+            <label for="username">Email<span class="obli">*</span></label>
+            <input type="email" placeholder="ja.rodriguezc@duocuc.cl" id="email" name="email" 
+            onchange="CambiarMayusculas2()" onfocus="CambiaColor(this)" >
+        </div>
+
+        <label for="username">Asunto: <span class="obli"></span></label>
+        <select name="asunto" required>
+            <option disabled selected value="elija">Seleccione un asunto</option>
+            <option value="dev">Devolucion</option>
+            <option value="servtecnico">Servicio tecnico</option>
+            <option value="iniciar sesion">Problemas al iniciar sesión</option>
+        </select><br><br>
+
+        
+        <textarea id="mensaje" name="mensaje" placeholder="Ingresa tu mensaje" 
+        onfocus="CambiaColor(this)" minlength="3" required></textarea>
+
+        <button>Enviar mensaje</button>
+    </form>
+  </div>
+
+
+</body>
+</html>

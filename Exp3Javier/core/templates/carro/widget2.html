@@ -1,0 +1,47 @@
+<table class="table table-bordered" style="color:black;">
+    <thead>
+        <tr>
+            <th colspan="3" class="text-center">
+                Mis compras
+            </th>
+        </tr>
+        <tr>
+            <th style="text-align: center;">Producto</th>
+            <th style="text-align: center;">cantidad</th>
+            <th style="text-align: center;">Precio$</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        {% if request.session.carro.items %}
+            {%for key, value in request.session.carro.items %}
+                <tr class="text-center" style="text-align: center;">
+                    <td>{{value.nombre}}</td>
+                    <td>{{value.cantidad}}</td>
+                    <td>{{value.precio}} $</td>
+                    <td>{{estado.estado}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        
+                
+                <td colspan="3">
+                    <div class="alert alert-danger text-center">
+                        Sin productos
+                    </div>
+
+                </td>
+
+            </tr>
+        {% endif %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" style="text-align: center;">
+                Total: {{importe_total_carro}}
+            </td>
+        </tr>
+    </tfoot>
+</table>

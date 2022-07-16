@@ -1,0 +1,193 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!--estilos propios-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500;1,700&display=swap' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/estilos3.css' %}">
+    <title>PetStore!</title>
+  </head>
+  <body class="fondo">
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      {% load static %}
+      
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{%  url 'index' %}"> 
+              <img class="logotipo" src="{% static 'img/LogoPetStore/LogoPerro.jpg' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{%  url 'index' %}">PetStore</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'somos' %}">Quienes Somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'formulariocontacto' %}">Contactanos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%  url 'listadoproductos' %}">Productos</a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Catalogo
+                </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{%  url 'galeria' %}">Alimentos</a></li>
+                    <li><a class="dropdown-item" href="#">Accesorios</a></li>
+                    <li><a class="dropdown-item" href="#">Juguetes</a></li>
+                    </ul>
+                <li class="nav-item">
+                    
+                  </li>
+              
+                </li>
+            </ul>
+
+            <form class="d-flex" action="{%  url 'formularioregistro' %}">
+              <button class="btn btn-outline-success" type="submit">Registrarse</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+    
+
+
+      
+    <!--Parrafos-->
+    <section class="altura">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-4">
+                    <img class="img-fluid" src="{% static 'img/perrogato.png' %}" alt="" width="450px">
+                </div>
+                <div class="col-12 col-sm-6">
+                    <br><br><br>
+                    <strong>
+                      <h1 class="tittle22">Misión:</h1>
+                    </strong>
+                    <hr class="container">
+                    <strong>
+                      Nuestra misión es crear un mundo mejor, ayudando a amar y proteger a sus mascotas. Basados en nuestro equipo de trabajo somos solidarios socialmente, 
+                      brindando la mayor cantidad de trabajo posible, innovando constantemente y logrando un prestigio que nos haga perdurar en el tiempo. Invirtiendo e innovando en proyectos 
+                      para ampliar la estructura y seguir creciendo en otras ciudades. Aportando y participando solidariamente para crear una comunidad inclusiva.
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="altura">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-4">
+                  <img class="img-fluid" src="{% static 'img/perro.png' %}" alt="" width="250px">
+              </div>
+              <div class="col-12 col-sm-6">
+                  <br><br><br>
+                  <strong>
+                    <h1 class="tittle22">Visión:</h1>
+                  </strong>
+                  <hr class="container">
+                  <strong>
+                    Ser una empresa moderna y sólida, líder en el país y con proyección internacional. 
+                    Liderada por un equipo con acceso a la más alta calidad de capacitaciónes y servicios de mascotas. Dedicados a nuestras mascotas con una mirada colaborativa.
+                  </strong>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="altura">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-4">
+                  <img class="img-fluid" src="{% static 'img/gatoperro.png' %}" alt="" width="450px">
+              </div>
+              <div class="col-12 col-sm-6">
+                  <br><br><br>
+                  <strong>
+                    <h1 class="tittle22">Objetivo:</h1>
+                  </strong>
+                  <hr class="container">
+                  <strong>
+                    Ganar dinero, mediante nuestra gran variedad de productos para mascotas. Todo esto para poder ayudar a una fundacion sin fines de lucro.
+                  </strong>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <hr class="container">
+
+
+
+    <!--Video-->
+    <section class="centro">
+        <section class="altura">
+            <section class="container-fluid">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9GZzemjwBPg" title="YouTube video player"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+                </iframe>
+            </section>
+        </section>
+    </section>
+    <hr class="container">
+
+
+
+    <!-- Footer -->
+    <footer>
+        <img class="logofooter" src="{% static 'img/LogoPetStore/LogoPerro.jpg' %}" alt="logotipo">
+        <br>
+        <img class="iconos" src="{% static 'img/IconosRedes/facebook-logo-button.svg' %}" alt="">
+        <img class="iconos" src="{% static 'img/IconosRedes/instagram-logo.svg' %}" alt="">
+        <img class="iconos" src="{% static 'img/IconosRedes/twitter-logo-button.svg' %}" alt="">
+        <p>
+            Javier Rodriguez Cortes.
+            <br>
+            <strong>
+                @Copyrigth Derechos reservados.
+            </strong>
+        </p>
+
+
+
+    </footer>
+   
+
+
+
+
+  <!--BootStrap-->
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

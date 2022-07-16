@@ -1,0 +1,97 @@
+.logotipo{
+    width: 50px;
+    padding: 5px 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.fondo{
+    background-color: rgb(255, 241, 225);
+}
+
+.altura{
+    padding: 20px 0;
+}
+
+.letra{
+    color: white;
+}
+.iconos{
+    width: 30px;
+    margin: 10px 5;
+}
+
+footer{
+    background-color: rgb(83, 71, 83);
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .logofooter{
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+footer p{
+    color: white;
+}
+
+.centro{
+    position: relative;
+    text-align: center;
+}
+
+
+.tittle{
+    text-align: center;
+    font-size: 40px;
+    color: #6a6a6a;
+    margin-top: 50px;
+    font-weight: 100;
+}
+
+
+.fotos{
+    width: 300px;
+    height: 300px;
+    text-align: center;
+}
+
+.p{
+    text-align: center;
+    display: flex;
+}
+
+.tittle2{
+    text-align: center;
+    font-size: 15px;
+    color: #6a6a6a;
+    font-weight: 100;
+}
+
+.tittle22{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 50px;
+    font-weight: 100;
+}
+
+.color{
+    color: rgb(0, 182, 189);
+}
+
+.titulo{
+    text-align: center;
+    font-size: 35px;
+}
+
+
+.container-clock{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+

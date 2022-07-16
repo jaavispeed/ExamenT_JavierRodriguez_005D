@@ -1,0 +1,32 @@
+{% extends "./base.html" %}
+
+
+
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Modificación de clientes.</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/modificarClientes/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtrut" name="txtrut" class="form-control" value="{{cliente.rut}}" placeholder="Ingrese el rut" minlength="9" maxlength="9" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{cliente.nombrec}}" placeholder="Ingrese el nombre" minlength="2" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

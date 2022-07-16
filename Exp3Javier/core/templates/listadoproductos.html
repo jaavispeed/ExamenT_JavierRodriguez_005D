@@ -1,0 +1,52 @@
+{% extends "./base.html" %}
+
+
+{% block body %}
+<div style="float:right;">
+
+    
+    {% include "carro/widget.html"%}
+
+
+</div>
+<div class="row">
+    
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio$</th>
+                        <th>Imagen</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{producto.nombreProducto}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>
+                            {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}" width="100px" height="100px">
+                            {% endif %}
+                        </td>
+                        {% if user.is_authenticated  %}
+                        <td><a href="{% url 'carro:agregar' producto.idProducto %}" class="btn btn-success">Agregar al carrito</a></td>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No estas logeado para comprar</a></td>
+                        {% endif %}
+
+                        
+                    </tr>
+                    {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

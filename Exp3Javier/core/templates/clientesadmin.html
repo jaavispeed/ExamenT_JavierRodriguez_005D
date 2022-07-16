@@ -1,0 +1,93 @@
+{% extends "./base.html" %}
+
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h2>Registro de clientes.</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/RegistrarClientes/" method="POST"> {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtrut" name="txtrut" class="form-control" placeholder="Ingrese el rut" minlength="9" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" placeholder="Ingrese el nombre" minlength="2" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcorreo" name="txtcorreo" class="form-control" placeholder="Ingrese el correo" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control" placeholder="Ingrese su direccion" minlength="2" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="numbertelefono" name="numbertelefono" class="form-control" placeholder="Ingrese su telefono" minlength="2" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        {% if user.is_authenticated  %}
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para agregar</a></td>
+                        {% endif %}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de clientes</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Producto</th>
+                        <th>Correo</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in clientes %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.rut}}</td>
+                        <td>{{c.nombrec}}</td>
+                        <td>{{c.producto}}</td>
+                        <td>{{c.correo}}</td>
+                        <td>{{c.direccion}}</td>
+                        <td>{{c.telefono}}</td>
+                        {% if user.is_authenticated  %}
+                        <td><a href="{% url 'editarCliente' c.rut %}" class="btn btn-info">Editar</a></td>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para modificar</a></td>
+                        {% endif %}
+                        
+                        {% if user.is_authenticated  %}
+                        <td><a href="{% url 'eliminarCliente' c.rut %}" class="btn btn-danger">Eliminar</a></td>
+                        {% else %}
+                        <td><a href="#" style="color:red;">No tiene permisos para eliminar</a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
